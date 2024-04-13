@@ -1,0 +1,6 @@
+[theme]
+base="light"
+primaryColor="#575735"
+
+[deprecation]
+showPyplotGlobalUse = false
