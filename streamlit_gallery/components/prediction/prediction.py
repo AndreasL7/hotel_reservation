@@ -168,7 +168,7 @@ def make_prediction(inputs,
         transformed_dataset = transformed_leaked(pd.DataFrame(inputs, index=[0]))
         y_pred_data_leakage = load_model_data_leakage().predict(pd.DataFrame(transformed_dataset, index=[0]))
         return y_pred_data_leakage
-    elif analyst == "Jill":
+    elif analyst == "Thomas":
         pipeline = load_pipeline()
         transformed_dataset = pipeline.transform(pd.DataFrame(inputs, index=[0]))
         y_prob_soft = load_model_soft().predict_proba(transformed_dataset)[:,1]
@@ -251,9 +251,9 @@ def main():
                                             'no_of_special_requests': 0}
     
     st.write("Try the model created by our two data scientists below!")
-    st.subheader("Meet John and Jill!")
+    st.subheader("Meet John and Thomas!")
     
-    col_analyst_john, col_analyst_jill = st.columns(2)
+    col_analyst_john, col_analyst_thomas = st.columns(2)
 
     with col_analyst_john:
         lottie_url = "https://lottie.host/0db51d3e-e84e-4e5a-8b1e-f73a89a77f65/i1GvROt5y3.json"
@@ -271,21 +271,21 @@ def main():
             logger.info("Analyst John has been chosen to make the prediction...")
             logger.info(f'After Choosing Analyst Session State: {st.session_state}')
 
-    with col_analyst_jill:
+    with col_analyst_thomas:
         lottie_url = "https://lottie.host/067bfd39-6ab6-484b-abd1-37451c842fd3/4OhK1ZCsaG.json"
         lottie_animation = load_lottie_url(lottie_url)
         st_lottie(lottie_animation, speed=1, width=350, height=350)
         st.markdown(
-            "<div style='text-align: center'><b>Jill</b></div>", unsafe_allow_html=True)
+            "<div style='text-align: center'><b>Thomas</b></div>", unsafe_allow_html=True)
         st.markdown(
             "<div style='text-align: center'>Trained in understanding and processing data, work collaboratively with LLM</div><br>", unsafe_allow_html=True)
         
         if st.button("Pick me!"):
-            sampleB = {'analyst': 'Jill'}
+            sampleB = {'analyst': 'Thomas'}
             
             st.session_state.get('analyst', sampleB["analyst"])
             update_form_values(sampleB)
-            logger.info("Analyst Jill has been chosen to make the prediction...")
+            logger.info("Analyst Thomas has been chosen to make the prediction...")
             logger.info(f'After Choosing Analyst Session State: {st.session_state}')
     
     st.divider()
